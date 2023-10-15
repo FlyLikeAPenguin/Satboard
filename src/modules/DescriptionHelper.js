@@ -28,7 +28,7 @@ export class DescriptionHelper {
             </tr>
           </tbody>
         </table>
-        ${this.renderHealth({ 'temp1': 50, 'temp2': 65, 'temp3': 20 })}
+        ${this.renderHealth({ temp1: 50, temp2: 65, temp3: 20 })}
         ${this.renderPasses(passes, time, isGroundStation)}
         ${typeof tle === "undefined" ? "" : this.renderTLE(tle)}
       </div>
@@ -55,15 +55,15 @@ export class DescriptionHelper {
       <tr>
         <td>${key}</td>
         <td>${value}</td>
-      </tr>`)
+      </tr>`);
     });
 
     html += `
         </tbody>
       </table>
-    </div>`
+    </div>`;
 
-    return html
+    return html;
   }
 
   static renderPasses(passes, time, showPassName) {
