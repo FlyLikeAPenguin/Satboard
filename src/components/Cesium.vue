@@ -30,13 +30,6 @@
             </span>
           </button>
         </b-tooltip>
-        <b-tooltip v-if="cc.minimalUI" label="Mobile" :triggers="tooltipTriggers" position="is-right">
-          <button type="button" class="cesium-button cesium-toolbar-button" @click="toggleMenu('ios')">
-            <span class="icon fill-parent">
-              <i class="fas fa-mobile-alt fa-fw"></i>
-            </span>
-          </button>
-        </b-tooltip>
         <b-tooltip label="Debug" :triggers="tooltipTriggers" position="is-right">
           <button type="button" class="cesium-button cesium-toolbar-button" @click="toggleMenu('dbg')">
             <span class="icon fill-parent">
@@ -156,7 +149,7 @@
           Decrease play speed
         </label>
         <label class="toolbarSwitch">
-          <input type="button" @click="$router.go({path: '', force: true})">
+          <input type="button" @click="$router.go({ path: '', force: true })">
           Reload
         </label>
       </div>
@@ -206,7 +199,8 @@
     </div>
     <div id="toolbarRight">
       <b-tooltip v-if="showUI" label="Github" :triggers="tooltipTriggers" position="is-left">
-        <a class="cesium-button cesium-toolbar-button" href="https://github.com/Flowm/satvis/" target="_blank" rel="noopener">
+        <a class="cesium-button cesium-toolbar-button" href="https://github.com/Flowm/satvis/" target="_blank"
+          rel="noopener">
           <span class="icon fill-parent">
             <i class="fab fa-github fa-fw mfa-button-width"></i>
           </span>
@@ -328,7 +322,7 @@ export default {
     if (this.$route.query.time) {
       cc.setTime(this.$route.query.time);
     }
-    this.showUI = !cc.minimalUIAtStartup;
+    this.showUI = true;
     this.$root.$on("updateCat", this.updateCat);
   },
   beforeDestroy() {
@@ -349,9 +343,6 @@ export default {
     },
     toggleUI() {
       this.showUI = !this.showUI;
-      if (!cc.minimalUI) {
-        cc.showUI = this.showUI;
-      }
     },
     updateCat() {
       this.$refs.SatelliteSelect.update();

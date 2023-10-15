@@ -48,8 +48,28 @@
     text-align: left;
 }
 
-.ibt .ibt-right {
+.ibth .ibth-right {
     text-align: right;
+}
+
+.ibth {
+    border-collapse: collapse;
+    border-radius: 6px;
+    width: 100%;
+}
+
+.ibth th, .ibth td {
+    border: 1px solid #6d6d6d;
+}
+
+.ibth th {
+    background-color: #4CAF50;
+    padding: 6px;
+}
+
+.ibth td {
+    text-align: center;
+    padding: 4px;
 }
 
 .cesium-infoBox-description {

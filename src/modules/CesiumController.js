@@ -11,13 +11,11 @@ dayjs.extend(utc);
 
 export class CesiumController {
   constructor() {
-    this.minimalUI = DeviceDetect.inIframe() || DeviceDetect.isIos();
-    this.minimalUIAtStartup = DeviceDetect.inIframe();
 
     this.viewer = new Cesium.Viewer("cesiumContainer", {
-      animation: !this.minimalUI,
+      animation: true,
       baseLayerPicker: false,
-      fullscreenButton: !this.minimalUI,
+      fullscreenButton: false,
       fullscreenElement: document.body,
       geocoder: false,
       homeButton: false,
@@ -26,8 +24,8 @@ export class CesiumController {
       navigationHelpButton: false,
       navigationInstructionsInitiallyVisible: false,
       selectionIndicator: false,
-      timeline: !this.minimalUI,
-      vrButton: !this.minimalUI,
+      timeline: true,
+      vrButton: false,
       contextOptions: {
         webgl: {
           alpha: true,
@@ -43,6 +41,7 @@ export class CesiumController {
     this.viewer.scene.requestRenderMode = true;
     // this.viewer.scene.debugShowFramesPerSecond = true;
     // this.viewer.extend(Cesium.viewerCesiumInspectorMixin);
+
 
     // Export CesiumController for debugger
     window.cc = this;
@@ -61,15 +60,7 @@ export class CesiumController {
     // Create Satellite Manager
     this.sats = new SatelliteManager(this.viewer);
 
-    // Add privacy policy to credits when not running in iframe
-    if (!DeviceDetect.inIframe()) {
-      this.viewer.scene.frameState.creditDisplay.addDefaultCredit(new Cesium.Credit("<a href=\"/privacy.html\" target=\"_blank\"><u>Privacy</u></a>"));
-    }
-
-    // Fix Cesium logo in minimal ui mode
-    if (this.minimalUI) {
-      setTimeout(() => { this.fixLogo(); }, 2500);
-    }
+    this.viewer.scene.frameState.creditDisplay.addDefaultCredit(new Cesium.Credit('<img src="images/Axelspace.png" title="Cesium"/>'));
   }
 
   set sceneMode(sceneMode) {
@@ -365,13 +356,9 @@ export class CesiumController {
   }
 
   fixLogo() {
-    if (this.minimalUI) {
-      // eslint-disable-next-line
-      this.viewer._bottomContainer.style.left = "5px";
-    }
     if (DeviceDetect.isiPhoneWithNotchVisible()) {
       // eslint-disable-next-line
-      this.viewer._bottomContainer.style.bottom = "20px";
+      this.viewer._bottomContainer.style.bottom = "0px";
     }
   }
 

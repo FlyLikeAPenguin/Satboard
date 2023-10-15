@@ -7,7 +7,7 @@ export class SatelliteManager {
     this.viewer = viewer;
 
     this.satellites = [];
-    this.enabledComponents = ["Point", "Label"];
+    this.enabledComponents = ["Point", "Label", "Orbit track", "Ground track"];
     this.enabledTags = [];
 
     this.viewer.trackedEntityChanged.addEventListener(() => {
