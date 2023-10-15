@@ -1,4 +1,4 @@
-# [satvis.space](https://satvis.space) ![Node CI](https://github.com/Flowm/satvis/workflows/Node%20CI/badge.svg)
+![Node CI](https://github.com/FlyLikeAPenguin/Satboard/workflows/Node%20CI/badge.svg)
 
 Satellite orbit visualization and pass prediction.
 
@@ -17,6 +17,9 @@ Satellite orbit visualization and pass prediction.
 - [Satellite.js](https://github.com/shashwatak/satellite-js)
 - [Vue.js](https://vuejs.org)
 - [Workbox](https://developers.google.com/web/tools/workbox)
+
+## Forked From
+- [SatVis](https://github.com/Flowm/satvis)
 
 ## Development
 
