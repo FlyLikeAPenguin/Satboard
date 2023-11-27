@@ -8,6 +8,7 @@ export default new Router({
   mode: "history",
   routes: [
     { path: "/", component: Cesium },
+    { path: "/Satboard/", component: Cesium },
     { path: "/move.html", component: Cesium },
     { path: "/ot.html", component: Cesium },
     { path: "/grus.html", component: Cesium },

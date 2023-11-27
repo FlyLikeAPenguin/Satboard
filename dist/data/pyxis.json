@@ -11,10 +11,6 @@
             "eps_battery_current": {
                 "display_name": "Battery Current",
                 "value": "3.01"
-            },
-            "boobah": {
-                "display_name": "eggs",
-                "value": 17
             }
         }
     }
