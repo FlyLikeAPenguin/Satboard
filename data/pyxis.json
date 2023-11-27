@@ -1,0 +1,17 @@
+{
+    "PYXIS": {
+        "display_name": "Pyxis",
+        "TLE1": "1 47936U 21022E   23287.83346331  .00003419  00000+0  31603-3 0  9991",
+        "TLE2": "2 47936  97.6481 182.0741 0019259   4.7385 355.4014 14.95090164139792",
+        "stats": {
+            "eps_battery_voltage": {
+                "display_name": "Battery Voltage",
+                "value": "5.1"
+            },
+            "eps_battery_current": {
+                "display_name": "Battery Current",
+                "value": "3.01"
+            }
+        }
+    }
+}

@@ -10,5 +10,6 @@ export default new Router({
     { path: "/", component: Cesium },
     { path: "/move.html", component: Cesium },
     { path: "/ot.html", component: Cesium },
+    { path: "/grus.html", component: Cesium },
   ],
 });

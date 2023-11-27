@@ -1,6 +1,6 @@
 <template>
   <div class="cesium">
-    <div v-if="showUI" id="toolbarLeft">
+    <div v-if="true" id="toolbarLeft">
       <div class="toolbarButtons">
         <b-tooltip label="Satellite selection" :triggers="tooltipTriggers" position="is-right">
           <button type="button" class="cesium-button cesium-toolbar-button" @click="toggleMenu('cat')">

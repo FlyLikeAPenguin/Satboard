@@ -4,7 +4,7 @@ import relativeTime from "dayjs/plugin/relativeTime";
 dayjs.extend(relativeTime);
 
 export class DescriptionHelper {
-  static renderDescription(time, name, position, passes, isGroundStation, tle, health) {
+  static renderDescription(time, name, position, passes, isGroundStation, tle, stats) {
     const description = `
       <div class="ib">
         <h3>Position</h3>
@@ -28,7 +28,7 @@ export class DescriptionHelper {
             </tr>
           </tbody>
         </table>
-        ${this.renderHealth({ temp1: 50, temp2: 65, temp3: 20 })}
+        ${this.renderStats(stats)}
         ${this.renderPasses(passes, time, isGroundStation)}
         ${typeof tle === "undefined" ? "" : this.renderTLE(tle)}
       </div>
@@ -36,10 +36,10 @@ export class DescriptionHelper {
     return description;
   }
 
-  static renderHealth(health) {
+  static renderStats(stats) {
     let html = `
     <div class="ib">
-      <h3>Health</h3>
+      <h3>Stats</h3>
       <table class="ibth">
         <thead>
           <tr>
@@ -49,12 +49,12 @@ export class DescriptionHelper {
         </thead>
         <tbody>
         `;
-    Object.entries(health).forEach(entry => {
+    Object.entries(stats).forEach(entry => {
       const [key, value] = entry;
       html += (`
       <tr>
-        <td>${key}</td>
-        <td>${value}</td>
+        <td>${value.display_name}</td>
+        <td>${value.value}</td>
       </tr>`);
     });
 
@@ -84,8 +84,8 @@ export class DescriptionHelper {
 
     const htmlName = showPassName ? "<th>Name</th>\n" : "";
     const html = `
-      <h3>Health</h3>
       <table class="ibt">
+        <h3>Passes</h3>
         <thead>
           <tr>
             ${htmlName}

@@ -43,8 +43,8 @@ export class SatelliteManager {
       });
   }
 
-  addFromTle(tle, tags) {
-    const sat = new SatelliteEntityWrapper(this.viewer, tle, tags);
+  addFromTle(tle, tags, stats) {
+    const sat = new SatelliteEntityWrapper(this.viewer, tle, tags, stats);
     this.add(sat);
   }
 

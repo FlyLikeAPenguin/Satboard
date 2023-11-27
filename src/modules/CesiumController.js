@@ -330,7 +330,7 @@ export class CesiumController {
   }
 
   set showUI(enabled) {
-    if (enabled) {
+    if (true) {
       /* eslint-disable no-underscore-dangle */
       this.viewer._animation.container.style.visibility = "";
       this.viewer._timeline.container.style.visibility = "";

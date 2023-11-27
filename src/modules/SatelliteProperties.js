@@ -7,7 +7,7 @@ import { PushManager } from "./PushManager";
 import satvisIcon from "../assets/android-chrome-192x192.png";
 
 export class SatelliteProperties {
-  constructor(tle, tags = []) {
+  constructor(tle, tags = [], stats) {
     this.name = tle.split("\n")[0].trim();
     if (tle.startsWith("0 ")) {
       this.name = this.name.substring(2);
@@ -23,6 +23,7 @@ export class SatelliteProperties {
     this.pm = new PushManager({
       icon: satvisIcon,
     });
+    this.stats = stats
   }
 
   hasTag(tag) {
@@ -174,7 +175,7 @@ export class SatelliteProperties {
     }
     // Check if still inside of current pass interval
     if (typeof this.passInterval !== "undefined" &&
-        Cesium.TimeInterval.contains(new Cesium.TimeInterval({ start: this.passInterval.start, stop: this.passInterval.stop }), time)) {
+      Cesium.TimeInterval.contains(new Cesium.TimeInterval({ start: this.passInterval.start, stop: this.passInterval.stop }), time)) {
       return false;
     }
     this.passInterval = {

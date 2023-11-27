@@ -6,10 +6,10 @@ import { CesiumEntityWrapper } from "./CesiumEntityWrapper";
 import { DescriptionHelper } from "./DescriptionHelper";
 
 export class SatelliteEntityWrapper extends CesiumEntityWrapper {
-  constructor(viewer, tle, tags) {
+  constructor(viewer, tle, tags, stats) {
     super(viewer);
     this.timeline = new CesiumTimelineHelper(viewer);
-    this.props = new SatelliteProperties(tle, tags);
+    this.props = new SatelliteProperties(tle, tags, stats);
   }
 
   enableComponent(name) {
@@ -79,7 +79,7 @@ export class SatelliteEntityWrapper extends CesiumEntityWrapper {
   createDescription() {
     const description = new Cesium.CallbackProperty((time) => {
       const cartographic = this.props.computePositionCartographicDegrees(time);
-      const content = DescriptionHelper.renderDescription(time, this.props.name, cartographic, this.props.passes, false, this.props.orbit.tle);
+      const content = DescriptionHelper.renderDescription(time, this.props.name, cartographic, this.props.passes, false, this.props.orbit.tle, this.props.stats);
       return content;
     }, false);
     this.description = description;

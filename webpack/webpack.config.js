@@ -15,6 +15,7 @@ module.exports = {
   entry: {
     app: "./src/app.js",
     move: "./src/move.js",
+    grus: "./src/grus.js",
     ot: "./src/ot.js",
     test: "./src/test/test.js",
   },
@@ -135,6 +136,11 @@ module.exports = {
       filename: "move.html",
       template: "src/index.html",
       chunks: ["move"],
+    }),
+    new HtmlWebpackPlugin({
+      filename: "grus.html",
+      template: "src/index.html",
+      chunks: ["grus"],
     }),
     new HtmlWebpackPlugin({
       filename: "ot.html",
