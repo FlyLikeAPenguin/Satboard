@@ -74,8 +74,7 @@
 
 .cesium-infoBox-description {
     margin-right: 0px;
-    min-height: 200px;
-    max-height: 500px;
-    overflow-y: auto;
+    min-height: 540px;
+    max-height: 100%;
     -webkit-overflow-scrolling: touch;
 }
