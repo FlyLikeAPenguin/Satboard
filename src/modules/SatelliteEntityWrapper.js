@@ -1,10 +1,10 @@
 import * as Cesium from "Cesium/Cesium";
 import CesiumSensorVolumes from "cesium-sensor-volumes";
+import { ArcType } from "cesium";
 import { SatelliteProperties } from "./SatelliteProperties";
 import { CesiumTimelineHelper } from "./CesiumTimelineHelper";
 import { CesiumEntityWrapper } from "./CesiumEntityWrapper";
 import { DescriptionHelper } from "./DescriptionHelper";
-import { ArcType } from "cesium";
 
 export class SatelliteEntityWrapper extends CesiumEntityWrapper {
   constructor(viewer, tle, tags, stats) {
