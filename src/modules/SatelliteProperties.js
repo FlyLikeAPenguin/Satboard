@@ -181,7 +181,7 @@ export class SatelliteProperties {
     this.passInterval = {
       start: Cesium.JulianDate.addDays(time, -1, Cesium.JulianDate.clone(time)),
       stop: Cesium.JulianDate.addDays(time, 1, Cesium.JulianDate.clone(time)),
-      stopPrediction: Cesium.JulianDate.addDays(time, 4, Cesium.JulianDate.clone(time)),
+      stopPrediction: Cesium.JulianDate.addDays(time, 1, Cesium.JulianDate.clone(time)),
     };
 
     const passes = this.orbit.computePassesElevation(

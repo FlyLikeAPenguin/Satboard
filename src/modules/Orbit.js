@@ -67,8 +67,8 @@ export default class Orbit {
   computePassesElevation(
     groundStationPosition,
     startDate = dayjs().toDate(),
-    endDate = dayjs(startDate).add(7, "day").toDate(),
-    minElevation = 10,
+    endDate = dayjs(startDate).add(1, "day").toDate(),
+    minElevation = 5,
     maxPasses = 50,
   ) {
     const groundStation = { ...groundStationPosition };
