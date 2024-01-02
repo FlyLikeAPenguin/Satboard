@@ -30,7 +30,6 @@ cc.sats.addFromTleUrl("data/tle/norad/grus.txt", ["GRUS"]);
 fetch("https://api.npoint.io/d27f495a2edadcefa497")
   .then((res) => res.json())
   .then((json) => {
-    console.log(json)
     cc.sats.addFromTle((`${json.PYXIS.display_name}\n${json.PYXIS.TLE1}\n${json.PYXIS.TLE2}`), ["VSP"], json.PYXIS.stats);
     console.log(json);
   });
