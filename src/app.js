@@ -30,7 +30,6 @@ cc.sats.addFromTleUrl("data/tle/norad/grus.txt", ["GRUS"]);
 fetch("data/pyxis.json")
   .then(res => res.json())
   .then(json => {
-    // Do whatever you want
     cc.sats.addFromTle((json.PYXIS.display_name + '\n' + json.PYXIS.TLE1 + '\n' + json.PYXIS.TLE2), ["VSP"], json.PYXIS.stats)
     console.log(json)
   });

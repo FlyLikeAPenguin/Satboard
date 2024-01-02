@@ -250,4 +250,14 @@ export class SatelliteProperties {
       duration: 4000,
     });
   }
+
+  reload() {
+    fetch("data/pyxis.json")
+      .then(res => res.json())
+      .then(json => {
+        this.orbit = new Orbit(this.name, json.PYXIS.display_name + '\n' + json.PYXIS.TLE1 + '\n' + json.PYXIS.TLE2);
+        this.tags = ["VSP"];
+        this.stats = json.PYXIS.stats
+      });
+  }
 }

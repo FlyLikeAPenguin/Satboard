@@ -10,6 +10,8 @@ export class SatelliteEntityWrapper extends CesiumEntityWrapper {
     super(viewer);
     this.timeline = new CesiumTimelineHelper(viewer);
     this.props = new SatelliteProperties(tle, tags, stats);
+
+    this.lastUpdated = Date.now();
   }
 
   enableComponent(name) {
@@ -78,6 +80,10 @@ export class SatelliteEntityWrapper extends CesiumEntityWrapper {
 
   createDescription() {
     const description = new Cesium.CallbackProperty((time) => {
+      if (this.lastUpdated + 5000 < Date.now()) {
+        this.props.reload()
+        this.lastUpdated = Date.now();
+      }
       const cartographic = this.props.computePositionCartographicDegrees(time);
       const content = DescriptionHelper.renderDescription(time, this.props.name, cartographic, this.props.passes, false, this.props.orbit.tle, this.props.stats);
       return content;
