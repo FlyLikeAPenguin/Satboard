@@ -80,7 +80,7 @@ export class DescriptionHelper {
     if (upcomingPassIdx < 0) {
       return "";
     }
-    const upcomingPasses = passes.slice(upcomingPassIdx);
+    const upcomingPasses = passes.slice(upcomingPassIdx, upcomingPassIdx + 10);
 
     const htmlName = showPassName ? "<th>Name</th>\n" : "";
     const html = `

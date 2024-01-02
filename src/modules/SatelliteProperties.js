@@ -180,14 +180,14 @@ export class SatelliteProperties {
     }
     this.passInterval = {
       start: Cesium.JulianDate.addDays(time, -1, Cesium.JulianDate.clone(time)),
-      stop: Cesium.JulianDate.addDays(time, 1, Cesium.JulianDate.clone(time)),
-      stopPrediction: Cesium.JulianDate.addDays(time, 1, Cesium.JulianDate.clone(time)),
+      stop: Cesium.JulianDate.addDays(time, 14, Cesium.JulianDate.clone(time)),
+      stopPrediction: Cesium.JulianDate.addDays(time, 14, Cesium.JulianDate.clone(time)),
     };
 
     const passes = this.orbit.computePassesElevation(
       this.groundStationPosition,
       Cesium.JulianDate.toDate(this.passInterval.start),
-      Cesium.JulianDate.toDate(this.passInterval.stopPrediction),
+      Cesium.JulianDate.toDate(this.passInterval.stopPrediction)
     );
     if (!passes) {
       return false;
