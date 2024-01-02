@@ -199,8 +199,12 @@
     </div>
     <div id="toolbarRight">
       <b-tooltip v-if="true" label="Github" :triggers="tooltipTriggers" position="is-left">
-        <a class="cesium-button cesium-toolbar-button" href="https://github.com/FlyLikeAPenguin/Satboard" target="_blank"
-          rel="noopener">
+        <a
+          class="cesium-button cesium-toolbar-button"
+          href="https://github.com/FlyLikeAPenguin/Satboard"
+          target="_blank"
+          rel="noopener"
+        >
           <span class="icon fill-parent">
             <i class="fab fa-github fa-fw mfa-button-width"></i>
           </span>

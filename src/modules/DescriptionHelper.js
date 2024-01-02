@@ -49,8 +49,8 @@ export class DescriptionHelper {
         </thead>
         <tbody>
         `;
-    Object.entries(stats).forEach(entry => {
-      const [key, value] = entry;
+    Object.entries(stats).forEach((entry) => {
+      const [, value] = entry;
       html += (`
       <tr>
         <td>${value.display_name}</td>

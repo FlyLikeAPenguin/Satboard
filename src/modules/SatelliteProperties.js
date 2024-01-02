@@ -7,7 +7,7 @@ import { PushManager } from "./PushManager";
 import satvisIcon from "../assets/android-chrome-192x192.png";
 
 export class SatelliteProperties {
-  constructor(tle, tags = [], stats) {
+  constructor(tle, stats, tags = []) {
     this.name = tle.split("\n")[0].trim();
     if (tle.startsWith("0 ")) {
       this.name = this.name.substring(2);
@@ -15,6 +15,7 @@ export class SatelliteProperties {
     this.orbit = new Orbit(this.name, tle);
     this.satnum = this.orbit.satnum;
     this.tags = tags;
+    this.stats = stats;
 
     this.groundStationPosition = undefined;
     this.passes = [];
@@ -23,7 +24,6 @@ export class SatelliteProperties {
     this.pm = new PushManager({
       icon: satvisIcon,
     });
-    this.stats = stats
   }
 
   hasTag(tag) {
@@ -253,11 +253,11 @@ export class SatelliteProperties {
 
   reload() {
     fetch("data/pyxis.json")
-      .then(res => res.json())
-      .then(json => {
-        this.orbit = new Orbit(this.name, json.PYXIS.display_name + '\n' + json.PYXIS.TLE1 + '\n' + json.PYXIS.TLE2);
+      .then((res) => res.json())
+      .then((json) => {
+        this.orbit = new Orbit(this.name, `${json.PYXIS.display_name}\n${json.PYXIS.TLE1}\n${json.PYXIS.TLE2}`);
         this.tags = ["VSP"];
-        this.stats = json.PYXIS.stats
+        this.stats = json.PYXIS.stats;
       });
   }
 }

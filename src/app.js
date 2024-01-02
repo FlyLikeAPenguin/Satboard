@@ -28,13 +28,13 @@ window.app = app;
 cc.sats.addFromTleUrl("data/tle/norad/grus.txt", ["GRUS"]);
 
 fetch("data/pyxis.json")
-  .then(res => res.json())
-  .then(json => {
-    cc.sats.addFromTle((json.PYXIS.display_name + '\n' + json.PYXIS.TLE1 + '\n' + json.PYXIS.TLE2), ["VSP"], json.PYXIS.stats)
-    console.log(json)
+  .then((res) => res.json())
+  .then((json) => {
+    cc.sats.addFromTle((`${json.PYXIS.display_name}\n${json.PYXIS.TLE1}\n${json.PYXIS.TLE2}`), ["VSP"], json.PYXIS.stats);
+    console.log(json);
   });
 
-cc.sats.enableTag("VSP")
+cc.sats.enableTag("VSP");
 
 // Register service worker
 if ("serviceWorker" in navigator && !window.location.href.includes("localhost")) {

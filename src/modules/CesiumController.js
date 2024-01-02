@@ -11,7 +11,6 @@ dayjs.extend(utc);
 
 export class CesiumController {
   constructor() {
-
     this.viewer = new Cesium.Viewer("cesiumContainer", {
       animation: true,
       baseLayerPicker: false,
@@ -42,7 +41,6 @@ export class CesiumController {
     // this.viewer.scene.debugShowFramesPerSecond = true;
     // this.viewer.extend(Cesium.viewerCesiumInspectorMixin);
 
-
     // Export CesiumController for debugger
     window.cc = this;
 
@@ -60,7 +58,7 @@ export class CesiumController {
     // Create Satellite Manager
     this.sats = new SatelliteManager(this.viewer);
 
-    this.viewer.scene.frameState.creditDisplay.addDefaultCredit(new Cesium.Credit('<img src="images/Axelspace.png" title="Cesium"/>'));
+    this.viewer.scene.frameState.creditDisplay.addDefaultCredit(new Cesium.Credit("<img src=\"images/Axelspace.png\" title=\"Cesium\"/>"));
   }
 
   set sceneMode(sceneMode) {
@@ -330,7 +328,7 @@ export class CesiumController {
   }
 
   set showUI(enabled) {
-    if (true) {
+    if (enabled) {
       /* eslint-disable no-underscore-dangle */
       this.viewer._animation.container.style.visibility = "";
       this.viewer._timeline.container.style.visibility = "";
