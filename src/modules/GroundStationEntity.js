@@ -6,11 +6,11 @@ import { DescriptionHelper } from "./DescriptionHelper";
 import icon from "../assets/images/icons/dish.svg";
 
 export class GroundStationEntity extends CesiumEntityWrapper {
-  constructor(viewer, sats, position) {
+  constructor(viewer, sats, position, name = "Ground station") {
     super(viewer);
     this.sats = sats;
 
-    this.name = "Ground station";
+    this.name = name;
     this.position = position;
 
     this.createEntities();

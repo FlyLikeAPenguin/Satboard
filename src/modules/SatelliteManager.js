@@ -7,7 +7,7 @@ export class SatelliteManager {
     this.viewer = viewer;
 
     this.satellites = [];
-    this.enabledComponents = ["Point", "Label", "Orbit track", "Ground track"];
+    this.enabledComponents = ["Point", "Label", "Orbit track", "Ground track", "Ground station link"];
     this.enabledTags = [];
 
     this.viewer.trackedEntityChanged.addEventListener(() => {
@@ -226,7 +226,7 @@ export class SatelliteManager {
     }
   }
 
-  setGroundStation(position) {
+  setGroundStation(position, name = "Ground station") {
     if (this.groundStationAvailable) {
       this.groundStation.hide();
     }
@@ -235,7 +235,7 @@ export class SatelliteManager {
     }
 
     // Create groundstation entity
-    this.groundStation = new GroundStationEntity(this.viewer, this, position);
+    this.groundStation = new GroundStationEntity(this.viewer, this, position, name);
     this.groundStation.show();
 
     // Set groundstation for all satellites

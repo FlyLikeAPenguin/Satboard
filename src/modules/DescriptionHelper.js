@@ -28,7 +28,7 @@ export class DescriptionHelper {
             </tr>
           </tbody>
         </table>
-        ${this.renderStats(stats)}
+        ${isGroundStation ? "" : this.renderStats(stats)}
         ${this.renderPasses(passes, time, isGroundStation)}
         ${typeof tle === "undefined" ? "" : this.renderTLE(tle)}
       </div>

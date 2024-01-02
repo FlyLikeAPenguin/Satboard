@@ -311,7 +311,7 @@ export class CesiumController {
     });
   }
 
-  setGroundStationFromLatLon(latlon) {
+  setGroundStationFromLatLon(latlon, name = "Ground station") {
     const [latitude, longitude, height] = latlon.split(",");
     if (!latitude || !longitude) {
       return;
@@ -324,7 +324,7 @@ export class CesiumController {
       coordinates.height = parseFloat(height);
     }
     coordinates.cartesian = Cesium.Cartesian3.fromDegrees(coordinates.longitude, coordinates.latitude, coordinates.height);
-    this.sats.setGroundStation(coordinates);
+    this.sats.setGroundStation(coordinates, name);
   }
 
   set showUI(enabled) {

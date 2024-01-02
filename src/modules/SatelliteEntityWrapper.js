@@ -4,6 +4,7 @@ import { SatelliteProperties } from "./SatelliteProperties";
 import { CesiumTimelineHelper } from "./CesiumTimelineHelper";
 import { CesiumEntityWrapper } from "./CesiumEntityWrapper";
 import { DescriptionHelper } from "./DescriptionHelper";
+import { ArcType } from "cesium";
 
 export class SatelliteEntityWrapper extends CesiumEntityWrapper {
   constructor(viewer, tle, tags, stats) {
@@ -165,7 +166,7 @@ export class SatelliteEntityWrapper extends CesiumEntityWrapper {
     this.createCesiumSatelliteEntity("Ground track", "polyline", polyline);
   }
 
-  createCone(fov = 10) {
+  createCone(fov = 5) {
     const cone = new Cesium.Entity();
     cone.addProperty("conicSensor");
     cone.conicSensor = new CesiumSensorVolumes.ConicSensorGraphics({
@@ -182,6 +183,7 @@ export class SatelliteEntityWrapper extends CesiumEntityWrapper {
   createGroundStationLink() {
     const polyline = new Cesium.PolylineGraphics({
       followSurface: false,
+      arcType: ArcType.NONE,
       material: new Cesium.PolylineGlowMaterialProperty({
         glowPower: 0.5,
         color: Cesium.Color.FORESTGREEN,
