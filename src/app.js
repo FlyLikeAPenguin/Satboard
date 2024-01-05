@@ -25,17 +25,22 @@ window.app = app;
 // cc.sats.addFromTleUrl("data/tle/norad/active.txt", ["Active"]);
 // cc.sats.addFromTleUrl("data/tle/norad/stations.txt", ["Stations"]);
 // cc.sats.addFromTleUrl("data/tle/norad/tle-new.txt", ["New"]);
-cc.sats.addFromTleUrl("data/tle/norad/grus.txt", ["GRUS"]);
-cc.setGroundStationFromLatLon("78.229772, 15.407786", "KSAT Svalbard"); // KSAT Svalbard
+// cc.sats.addFromTleUrl("data/tle/norad/grus.txt", ["GRUS"]);
 
 fetch("https://api.npoint.io/d27f495a2edadcefa497")
   .then((res) => res.json())
   .then((json) => {
-    cc.sats.addFromTle((`${json.PYXIS.display_name}\n${json.PYXIS.TLE1}\n${json.PYXIS.TLE2}`), ["VSP"], json.PYXIS.stats);
-    console.log(json);
+    for (const key in json) {
+      if (Object.hasOwnProperty.call(json, key)) {
+        const element = json[key];
+        cc.sats.addFromTle((`${element.display_name}\n${element.TLE1}\n${element.TLE2}`), element.groups, element.stats);
+      }
+    }
   });
+cc.setGroundStationFromLatLon("78.229772, 15.407786", "KSAT Svalbard"); // KSAT Svalbard
 
 cc.sats.enableTag("VSP");
+// cc.sats.enableTag("GRUS");
 
 // Register service worker
 if ("serviceWorker" in navigator && !window.location.href.includes("localhost")) {

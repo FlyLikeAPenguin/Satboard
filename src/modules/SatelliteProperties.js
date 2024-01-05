@@ -255,9 +255,10 @@ export class SatelliteProperties {
     fetch("https://api.npoint.io/d27f495a2edadcefa497")
       .then((res) => res.json())
       .then((json) => {
-        this.orbit = new Orbit(this.name, `${json.PYXIS.display_name}\n${json.PYXIS.TLE1}\n${json.PYXIS.TLE2}`);
-        this.tags = ["VSP"];
-        this.stats = json.PYXIS.stats;
+        const sat = json[this.name.toUpperCase()]
+        this.orbit = new Orbit(this.name, `${sat.display_name}\n${sat.TLE1}\n${sat.TLE2}`);
+        this.tags = sat.groups;
+        this.stats = sat.stats;
       });
   }
 }

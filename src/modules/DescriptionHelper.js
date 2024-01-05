@@ -29,7 +29,7 @@ export class DescriptionHelper {
           </tbody>
         </table>
         ${this.renderPasses(passes, time, isGroundStation)}
-        ${isGroundStation ? "" : this.renderStats(stats)}
+        ${(isGroundStation || !stats) ? "" : this.renderStats(stats)}
         ${typeof tle === "undefined" ? "" : this.renderTLE(tle)}
       </div>
     `;
