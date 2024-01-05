@@ -30,12 +30,10 @@ window.app = app;
 fetch("https://api.npoint.io/d27f495a2edadcefa497")
   .then((res) => res.json())
   .then((json) => {
-    for (const key in json) {
-      if (Object.hasOwnProperty.call(json, key)) {
-        const element = json[key];
-        cc.sats.addFromTle((`${element.display_name}\n${element.TLE1}\n${element.TLE2}`), element.groups, element.stats);
-      }
-    }
+    Object.keys(json).forEach(function (key) {
+      const element = json[key];
+      cc.sats.addFromTle((`${element.display_name}\n${element.TLE1}\n${element.TLE2}`), element.groups, element.stats);
+    })
   });
 cc.setGroundStationFromLatLon("78.229772, 15.407786", "KSAT Svalbard"); // KSAT Svalbard
 
