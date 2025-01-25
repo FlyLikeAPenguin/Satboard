@@ -58,7 +58,6 @@ export class CesiumController {
     // Create Satellite Manager
     this.sats = new SatelliteManager(this.viewer);
 
-    this.viewer.scene.frameState.creditDisplay.addDefaultCredit(new Cesium.Credit("<img src=\"images/Axelspace.png\" title=\"Cesium\"/>"));
   }
 
   set sceneMode(sceneMode) {
