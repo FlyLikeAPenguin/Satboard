@@ -40,4 +40,4 @@ npm install
 <p align="center"><a href="https://apps.apple.com/app/satvis/id1441084766"><img src="src/assets/app-store-badge.svg" width="250" /></a></p>
 
 ## License
-This project is licensed under the MIT License - see `LICENSE` file for details.
+This project is licensed under a RESTRICTIVE License - see the LICENSE file for details.
