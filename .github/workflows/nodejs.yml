@@ -21,3 +21,5 @@ jobs:
       run: npm run lint -- --fix
     - name: npm build
       run: npm run build
+    - name: npm deploy
+      run: npm run deploy
