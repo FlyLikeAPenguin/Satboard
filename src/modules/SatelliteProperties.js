@@ -184,6 +184,9 @@ export class SatelliteProperties {
       stopPrediction: Cesium.JulianDate.addDays(time, 14, Cesium.JulianDate.clone(time)),
     };
 
+    if (!this.orbit || !this.groundStationPosition || !this.passInterval.start || !this.passInterval.stopPrediction) {
+      return false;
+    }
     const passes = this.orbit.computePassesElevation(
       this.groundStationPosition,
       Cesium.JulianDate.toDate(this.passInterval.start),
@@ -252,13 +255,13 @@ export class SatelliteProperties {
   }
 
   reload() {
-    fetch("https://api.npoint.io/d27f495a2edadcefa497")
-      .then((res) => res.json())
-      .then((json) => {
-        const sat = json[this.name.toUpperCase()]
-        this.orbit = new Orbit(this.name, `${sat.display_name}\n${sat.TLE1}\n${sat.TLE2}`);
-        this.tags = sat.groups;
-        this.stats = sat.stats;
-      });
+    // fetch("https://api.npoint.io/d27f495a2edadcefa497")
+    //   .then((res) => res.json())
+    //   .then((json) => {
+    //     const sat = json[this.name.toUpperCase()]
+    //     this.orbit = new Orbit(this.name, `${sat.display_name}\n${sat.TLE1}\n${sat.TLE2}`);
+    //     this.tags = sat.groups;
+    //     this.stats = sat.stats;
+    //   });
   }
 }

@@ -35,7 +35,7 @@ export class SatelliteManager {
         const lines = data.split(/\r?\n/);
         for (let i = 3; i < lines.length; i + 3) {
           const tle = lines.splice(i - 3, i).join("\n");
-          this.addFromTle(tle, tags);
+          this.addFromTle(tle, tags, {});
         }
       })
       .catch((error) => {

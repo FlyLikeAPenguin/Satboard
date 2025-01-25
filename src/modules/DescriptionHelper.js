@@ -4,7 +4,7 @@ import relativeTime from "dayjs/plugin/relativeTime";
 dayjs.extend(relativeTime);
 
 export class DescriptionHelper {
-  static renderDescription(time, name, position, passes, isGroundStation, tle, stats) {
+  static renderDescription(time, name, position, passes, isGroundStation, tle) {
     const description = `
       <div class="ib">
         <h3>Position</h3>
@@ -29,7 +29,6 @@ export class DescriptionHelper {
           </tbody>
         </table>
         ${this.renderPasses(passes, time, isGroundStation)}
-        ${(isGroundStation || !stats) ? "" : this.renderStats(stats)}
         ${typeof tle === "undefined" ? "" : this.renderTLE(tle)}
       </div>
     `;
