@@ -57,7 +57,6 @@ export class CesiumController {
 
     // Create Satellite Manager
     this.sats = new SatelliteManager(this.viewer);
-
   }
 
   set sceneMode(sceneMode) {

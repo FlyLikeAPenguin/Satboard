@@ -32,8 +32,8 @@ fetch("https://docs.google.com/spreadsheets/d/1qz_FSOBoqgi-rBA6LwoK896RLhzQg_A1a
   .then((csv) => {
     const lines = csv.trim().split("\n");
     // Skip header
-    for (let i = 1; i < lines.length; i++) {
-      const [name, norad, tle1, tle2] = lines[i].replaceAll("\"", "").split(",");
+    for (let i = 1; i < lines.length; i += 1) {
+      const [name, , tle1, tle2] = lines[i].replaceAll("\"", "").split(",");
       if (name && tle1 && tle2) {
         cc.sats.addFromTle(
           `${name}\n${tle1}\n${tle2}`,
@@ -42,8 +42,7 @@ fetch("https://docs.google.com/spreadsheets/d/1qz_FSOBoqgi-rBA6LwoK896RLhzQg_A1a
         );
       }
     }
-  }
-  );
+  });
 cc.setGroundStationFromLatLon("78.229772, 15.407786", "KSAT Svalbard"); // KSAT Svalbard
 
 // cc.sats.enableTag("VSP");
