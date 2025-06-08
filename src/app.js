@@ -25,20 +25,29 @@ window.app = app;
 // cc.sats.addFromTleUrl("data/tle/norad/active.txt", ["Active"]);
 cc.sats.addFromTleUrl("data/tle/norad/stations.txt", ["Stations"]);
 cc.sats.addFromTleUrl("data/tle/norad/tle-new.txt", ["New"]);
-// cc.sats.addFromTleUrl("data/tle/norad/grus.txt", ["GRUS"]);
+cc.sats.addFromTleUrl("data/tle/norad/grus.txt", ["GRUS"]);
 
-// fetch("https://api.npoint.io/d27f495a2edadcefa497")
-//   .then((res) => res.json())
-//   .then((json) => {
-//     Object.keys(json).forEach(function (key) {
-//       const element = json[key];
-//       cc.sats.addFromTle((`${element.display_name}\n${element.TLE1}\n${element.TLE2}`), element.groups, element.stats);
-//     })
-//   });
+fetch("https://docs.google.com/spreadsheets/d/1qz_FSOBoqgi-rBA6LwoK896RLhzQg_A1aESXnd0bdgA/gviz/tq?tqx=out:csv")
+  .then((res) => res.text())
+  .then((csv) => {
+    const lines = csv.trim().split("\n");
+    // Skip header
+    for (let i = 1; i < lines.length; i++) {
+      const [name, norad, tle1, tle2] = lines[i].replaceAll("\"", "").split(",");
+      if (name && tle1 && tle2) {
+        cc.sats.addFromTle(
+          `${name}\n${tle1}\n${tle2}`,
+          ["GRUS"],
+          {},
+        );
+      }
+    }
+  }
+  );
 cc.setGroundStationFromLatLon("78.229772, 15.407786", "KSAT Svalbard"); // KSAT Svalbard
 
 // cc.sats.enableTag("VSP");
-cc.sats.enableTag("Stations");
+cc.sats.enableTag("GRUS");
 // cc.sats.enableTag("GRUS");
 
 // Register service worker
