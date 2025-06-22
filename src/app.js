@@ -37,7 +37,7 @@ fetch("https://docs.google.com/spreadsheets/d/1qz_FSOBoqgi-rBA6LwoK896RLhzQg_A1a
       if (name && tle1 && tle2) {
         cc.sats.addFromTle(
           `${name}\n${tle1}\n${tle2}`,
-          ["GRUS"],
+          name.includes("GRUS") ? ["GRUS"] : ["Transporter-14"],
           {},
         );
       }
